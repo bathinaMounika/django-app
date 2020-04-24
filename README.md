@@ -43,4 +43,4 @@ WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status
 WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError("Can't connect to HTTPS URL because the SSL module is not available.")': /simple/django/
 ```
 
-<h3 style="text-align: center; color: green">OR</h3>
+<h3 align="center" color="green">OR</h3>
