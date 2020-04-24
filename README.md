@@ -52,6 +52,6 @@ Could not fetch URL https://pypi.org/simple/pip/: There was a problem confirming
 ```
 
 
-<h3 align="center" color="green">OR</h3>
+<h3 align="center">OR</h3>
 * Open Anaconda Prompt
 * installing required packages
