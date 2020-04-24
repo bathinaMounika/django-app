@@ -14,7 +14,7 @@
     </li>
 </ul>
  ```
-           git clone https://github.com/bathinaMounika/django-app.git
+git clone https://github.com/bathinaMounika/django-app.git
 ```
 <ul>
     <li>
