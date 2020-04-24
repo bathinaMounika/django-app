@@ -8,6 +8,9 @@
 </ul>
 
 ### Setup
+<ul>
+<li>Clone the repo</li>
+</ul>
 
 ```
 git clone https://github.com/bathinaMounika/django-app.git
@@ -15,13 +18,13 @@ git clone https://github.com/bathinaMounika/django-app.git
 <ul>
     <li>
         Create Virtual Environment
-        ```
-          python -m virtualenv DJANGO
-        ```
+```
+python -m virtualenv DJANGO
+```
          activation
-         ```
-          DJANGO/Scripts/activate.bat    
-         ```
+```
+DJANGO/Scripts/activate.bat    
+```
     </li>
     <li>
         install django
