@@ -16,9 +16,7 @@
 git clone https://github.com/bathinaMounika/django-app.git
 ```
 <ul>
-    <li>
-        Create Virtual Environment
-    </li>
+<li>Create Virtual Environment</li>
 <ul>
 ```
 python -m virtualenv DJANGO
@@ -27,10 +25,8 @@ python -m virtualenv DJANGO
 DJANGO/Scripts/activate.bat    
 ```
 <ul>
-    <li>
-        install django
+<li>install django</li>
+</ul>
 ```
 pip install Django
 ```
-    </li>
-</ul>
