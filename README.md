@@ -27,8 +27,8 @@
     </li>
     <li>
         install django
-         ```
-           pip install Django
-         ```
+```
+pip install Django
+```
     </li>
 </ul>
