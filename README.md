@@ -62,7 +62,7 @@ Could not fetch URL https://pypi.org/simple/pip/: There was a problem confirming
 pip install -r requirements.txt
 ```
 
-##Run
+## Run
 
 ```
 python manage.py makemigrations
@@ -70,6 +70,10 @@ python manage.py makemigrations
 python manage.py migrate
 
 python manage.py runserver
-```
+``` 
+
+## Type the following in the browser
+  http://127.0.0.1:8000/
+
 
 
