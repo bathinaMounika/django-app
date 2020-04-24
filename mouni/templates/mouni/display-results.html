@@ -9,12 +9,17 @@
     <th>Subject</th>
     <th>Skill</th>
     <th>Marks</th>
+    <th>Total Marks</th>
+    <th>Remarks</th>
   </tr>
   {% for result in results %}
       <tr>
       	<td>{{ result.exam.subject }} </td>
       	<td>{{ result.exam.skillType }}</td>
       	<td>{{ result.marks }}</td>
+        <td>{{result.total_marks }}</td>
+        <td>{{ result.remarks }}
+          <img src="../media/{{ result.remarks }}.png" alt="emoji" width="42" height="42" ></td>
       </tr>
   {% endfor %}
 </table>

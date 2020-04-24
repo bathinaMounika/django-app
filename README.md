@@ -65,6 +65,8 @@ pip install -r requirements.txt
 ## Run
 
 ```
+python manage.py createsuperuser
+
 python manage.py makemigrations
 
 python manage.py migrate
@@ -74,6 +76,11 @@ python manage.py runserver
 
 ## Type the following in the browser
   http://127.0.0.1:8000/
+
+## Access admin page with
+
+ http://127.0.0.1:8000/admin
+
 
 
 

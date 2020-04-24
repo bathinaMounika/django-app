@@ -19,6 +19,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 import csv
 import random
 
+def get_remarks(percent):
+    if percent > 90:
+        return "Very Good"
+    elif percent > 70:
+        return "Good"
+    elif percent > 40:
+        return "Average"
+    else:
+        return "Poor"
 
 
 class ExamListView(ListView):
@@ -29,7 +38,7 @@ class ExamListView(ListView):
 
 
 
-class ExamDetailView(LoginRequiredMixin, DetailView):
+class ExamDetailView(LoginRequiredMixin, DetailView, UserPassesTestMixin):
     model = Exam #context_object_name = 'exam'
     ordering = ['-start']
 
@@ -73,6 +82,7 @@ class ExamDetailView(LoginRequiredMixin, DetailView):
         result = ResultPerExam()
         result.student_id = request.user.id
         result.exam_id = eid
+        TM = result.total_marks = exam.question_set.count()
         result.que_pick_ans = ""
         for q in exam.question_set.all():
             print(q, q.ans, request.POST.get(str(q.id)))
@@ -84,11 +94,20 @@ class ExamDetailView(LoginRequiredMixin, DetailView):
                 result.que_pick_ans += str(q.id) + ":" + op_num + ":0,"
         result.que_pick_ans = result.que_pick_ans.rstrip(",")
         result.marks = score
+        percentage = (score/TM) * 100
+        result.remarks = get_remarks(percentage)
         print("saving seed = ", seed)
         result.seed = seed
         result.save()
         res += str(score) + "</h1>"
-        return HttpResponse(res, content_type="text/html")
+        with open('results.csv', mode='a+', newline='') as f:
+            fwriter = csv.writer(f, delimiter=',', quotechar='"', quoting = csv.QUOTE_MINIMAL)
+            fwriter.writerow([str(result.student_id), request.user, eid, exam.skillType, score, TM, percentage])
+        f.close()
+
+        #return HttpResponse(res, content_type="text/html")
+        return redirect("mouni:display-results")
+
 
 
 @login_required
@@ -99,6 +118,10 @@ def display_results(request):
             'results' : ResultPerExam.objects.filter(student_id = student_id)
         }
         return render(request, 'mouni/display-results.html', context)
+
+class ResultDetailView(LoginRequiredMixin, DetailView):
+    model = Exam
+    template_name = 'mouni/result.html'
         
 
 

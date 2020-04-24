@@ -60,37 +60,49 @@
     </div>
 </div>
 </div>
+<hr>
 {{ formset.management_form }}
 {% for form in formset %}
-<div class="row form-row spacer">
-    <div class="col-2">
-        <label>{{form.question.label}}</label>
-    </div>
-    <div class="col-4">
-        <div class="input-group">
-            {{form.question}}
+<div class="mb-5 mx-5 border border-primary">
+        <div class="form-group mb-6 mx-6">
+             <label  class="col-sm-2 col-form-label"> {{form.question.label}} </label>
+             <button type="button" class="float-right btn btn-danger ml-5 remove-question">Delete</button>
+             <div class="col-sm-10">
+                {{form.question}}
+             </div>
         </div>
-        <div class="input-group">
-            {{form.ans}}
+        <div class="form-group mb-0">
+            <label  class="col-sm-2 col-form-label">{{form.ans.label}}</label>
+            <div class="col-sm-10">
+               {{form.ans}}
+            </div>
         </div>
-        <div class="input-group">
-            {{form.op2}}
+        <div class="form-group mb-0">
+            <label  class="col-sm-2 col-form-label">{{form.op2.label}}</label>
+            <div class="col-sm-10">
+               {{form.op2}}
+            </div>
         </div>
-        <div class="input-group">
-            {{form.op3}}
+        <div class="form-group mb-0">
+            <label class="col-sm-2 col-form-label">{{form.op3.label}}</label>
+            <div class="col-sm-10">
+                {{form.op3}}
+            </div>
         </div>
-        <div class="input-group">
-            {{form.op4}}
+        <div class="form-group">
+            <label class="col-sm-2 col-form-label">{{form.op4.label}}</label>
+            <div class="col-sm-10">
+                {{form.op4}}
+            </div>
         </div>
-    </div>
-    <div class="input-group-append">
-                <button class="btn btn-success add-form-row">+</button>
-    </div>
 </div>
 {% endfor %}
 <div class="row spacer">
     <div class="col-4 offset-2">
         <button type="submit" class="btn btn-block btn-primary">Create</button>
+    </div>
+    <div class="border-append">
+                <button class="btn btn-success add-question">Add Question</button>
     </div>
 </div>
 </form>
@@ -100,6 +112,10 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script type="text/javascript">
 function updateElementIndex(el, prefix, ndx) {
+    console.log("updateElementIndex")
+    console.log("el", el)
+    console.log("prefix", prefix);
+    console.log("ndx", ndx)
     var id_regex = new RegExp('(' + prefix + '-\\d+)');
     var replacement = prefix + '-' + ndx;
     if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
@@ -107,8 +123,13 @@ function updateElementIndex(el, prefix, ndx) {
     if (el.name) el.name = el.name.replace(id_regex, replacement);
 }
 function cloneMore(selector, prefix) {
+    console.log("cloneMore")
+    console.log("selector", selector)
+    console.log("prefix", prefix)
     var newElement = $(selector).clone(true);
+    console.log("newElement", newElement);
     var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+    console.log("total", total);
     newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
         var name = $(this).attr('name')
         if(name) {
@@ -126,19 +147,19 @@ function cloneMore(selector, prefix) {
     });
     total++;
     $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+    console.log("TOTAL_FORMS = ", $('#id_' + prefix + '-TOTAL_FORMS').val());
     $(selector).after(newElement);
-    var conditionRow = $('.form-row:not(:last)');
-    conditionRow.find('.btn.add-form-row')
-    .removeClass('btn-success').addClass('btn-danger')
-    .removeClass('add-form-row').addClass('remove-form-row')
-    .html('-');
     return false;
 }
 function deleteForm(prefix, btn) {
+    console.log("deleteForm")
+    console.log("prefix", prefix)
+    console.log("btn", btn)
     var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
     if (total > 1){
-        btn.closest('.form-row').remove();
-        var forms = $('.form-row');
+        console.log("btn.closest", btn.closest('.border'));
+        btn.closest('.border').remove();
+        var forms = $('.border');
         $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
         for (var i=0, formCount=forms.length; i<formCount; i++) {
             $(forms.get(i)).find(':input').each(function() {
@@ -148,12 +169,12 @@ function deleteForm(prefix, btn) {
     }
     return false;
 }
-$(document).on('click', '.add-form-row', function(e){
+$(document).on('click', '.add-question', function(e){
     e.preventDefault();
-    cloneMore('.form-row:last', 'form');
+    cloneMore('div.border:last', 'form');
     return false;
 });
-$(document).on('click', '.remove-form-row', function(e){
+$(document).on('click', '.remove-question', function(e){
     e.preventDefault();
     deleteForm('form', $(this));
     return false;

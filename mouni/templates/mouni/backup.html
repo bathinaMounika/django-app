@@ -1,0 +1,77 @@
+<div class="row spacer">
+<div class="col-2">
+    <label>{{examform.subject.label}}</label>
+</div>
+<div class="col-4">
+    <div class="input-group">
+        {{examform.subject}}
+        {{examform.subject.error}}
+    </div>
+</div>
+</div>
+<div class="row spacer">
+<div class="col-2">
+    <label>{{examform.skillType.label}}</label>
+</div>
+<div class="col-4">
+    <div class="input-group">
+        {{examform.skillType}}
+    </div>
+</div>
+</div>
+<div class="row spacer">
+<div class="col-2">
+    <label>{{examform.teacher.label}}</label>
+</div>
+<div class="col-4">
+    <div class="input-group" >
+        {{examform.teacher}}
+    </div>
+</div>
+</div>
+<div class="row spacer">
+<div class="col-2">
+    <label>{{examform.start.label}}</label>
+</div>
+<div class="col-4">
+    <div class="input-group">
+        {{examform.start}}
+    </div>
+</div>
+</div>
+
+{% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class = "alert alert-danger">
+                    <strong> {{ error|escape }} </strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class = "alert alert-danger">
+                    <strong> {{ error|escape }} </strong>
+            </div>
+        {% endfor %}
+{% endif %}
+
+<tr>
+    <th><label for="id_skillType">Skill Type:</label></th>
+    <td>
+        <input type="text" name="skillType" maxlength="20" required id="id_skillType" /><br />
+        <span class="helptext">skill you wanna test students in this exam</span>
+    </td>
+</tr>
+<tr>
+    <th><label for="id_subject">Subject:</label></th>
+    <td><input type="text" name="subject" maxlength="20" required id="id_subject" /></td>
+</tr>
+<tr>
+    <th><label for="id_start">Start:</label></th>
+    <td><input type="text" name="start" value="2020-03-16 10:16:38" required id="id_start" /><input type="hidden" name="initial-start" value="2020-03-16 10:16:38" id="initial-id_start" /></td>
+</tr>
+<tr>
+    <th><label for="id_teacher">Teacher:</label></th>
+    <td><input type="text" name="teacher" readonly="readonly" maxlength="20" required id="id_teacher" /></td>
+</tr>
+

@@ -1,3 +1,25 @@
-<h1>
-	 write page to display results
-</h1>
+{% extends "mouni/base.html" %}
+{% load static %}
+{% block custom_css %}
+ <link rel="stylesheet" href="{% static "mouni/results.css" %}" type="text/css" />
+{% endblock %}
+{% block container %}
+<h3> Student Performance in the skill {{object.skillType}} </h3>
+Subject: {{object.subject}}
+<br>
+Total Marks: {{ object.question_set.count }}
+<table id="results">
+  <tr>
+    <th>Student ID</th>
+    <th>Student Name</th>
+    <th>Marks</th>
+  </tr>
+  {% for result in object.resultperexam_set.all %}
+      <tr>
+      	<td>{{ result.student_id }}</td>
+        <td>{{result.student}}</td>
+      	<td>{{ result.marks }}</td>
+      </tr>
+  {% endfor %}
+</table>
+{% endblock container %}

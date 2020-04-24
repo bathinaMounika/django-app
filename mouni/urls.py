@@ -2,7 +2,8 @@ from django.urls import path, include
 from mouni import views
 from mouni.views import (
 	ExamListView,
-	ExamDetailView, 
+	ExamDetailView,
+    ResultDetailView, 
 	MessageCreateView, 
 	MessageUpdateView, 
 	MessageDeleteView, 
@@ -21,5 +22,6 @@ urlpatterns = [
     path("message/<int:pk>/update/", MessageUpdateView.as_view(), name='msg-update'),
     path("message/<int:pk>/delete/", MessageDeleteView.as_view(), name='msg-delete'),
     path("display_results/", views.display_results, name="display-results"),
+    path("results/<int:pk>", ResultDetailView.as_view(), name='results'),
 ]
 

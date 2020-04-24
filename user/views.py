@@ -39,4 +39,3 @@ def profile(request):
 	    'p_form': p_form
 	}
 	return render(request, 'user/profile.html', context)
-
