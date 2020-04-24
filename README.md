@@ -18,14 +18,15 @@ git clone https://github.com/bathinaMounika/django-app.git
 <ul>
     <li>
         Create Virtual Environment
+    </li>
+<ul>
 ```
 python -m virtualenv DJANGO
 ```
-         activation
 ```
 DJANGO/Scripts/activate.bat    
 ```
-    </li>
+<ul>
     <li>
         install django
 ```
