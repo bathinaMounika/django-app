@@ -56,4 +56,20 @@ Could not fetch URL https://pypi.org/simple/pip/: There was a problem confirming
 
 * Open Anaconda Prompt
 
-* installing required packages
+* install required packages
+
+```
+pip install -r requirements.txt
+```
+
+##Run
+
+```
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py runserver
+```
+
+
