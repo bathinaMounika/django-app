@@ -1,0 +1,21 @@
+{% extends "mouni/base.html" %}
+{% load static %}
+{% block container %}
+    <p>WELCOME HOME</p>
+    {% for exam in exams %}
+        <article class="media content-section">
+        	<div class="media-body">
+        		<div class="article-metadata">
+        			<a class="mr-2" href="{% url 'mouni:exam-detail' exam.pk %}">{{ exam.skillType }} </a>
+                    <small class="text-muted">Subject : {{ exam.subject}}</small> 
+        			<small class="text-muted">Exam date : {{ exam.start}}</small> 
+                    <small class="text-muted">teacher: {{ exam.teacher }}</small>
+        		</div>
+        		{% comment %}
+        		<!-- <h2><a class="article-title" href="#">{{ exam.start }}</a></h2>
+        		<p class="article-content"> {{ exam.description }} </p> -->
+        		{% endcomment %}
+        	</div>
+        </article>
+    {% endfor %}
+{% endblock container %}

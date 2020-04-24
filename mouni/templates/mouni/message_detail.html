@@ -1,0 +1,24 @@
+{% extends "mouni/base.html" %}
+{% block container %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ object.student }}</a>
+                {% if object.student == user.username %}
+                    <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'mouni:msg-update' object.id%}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'mouni:msg-delete' object.id %}">Delete</a>
+                    </div>
+                {% endif %}
+                <div>
+                    <h2 class="article-title">{{ object.title }}</h2>
+                    <p class="article-content">{{ object.msg }}</p>
+                    {% for name, value in object.get_fields %}
+                        <h2 class="article-title">{{ name }}</h2>
+                        <p class="article-content">{{ value }}</p>
+                    {% endfor %}
+                </div>
+            </div>            
+        </div>
+    </article> 
+{% endblock container %}

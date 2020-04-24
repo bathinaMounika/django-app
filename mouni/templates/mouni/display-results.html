@@ -1,0 +1,21 @@
+{% extends "mouni/base.html" %}
+{% load static %}
+{% block custom_css %}
+ <link rel="stylesheet" href="{% static "mouni/results.css" %}" type="text/css" />
+{% endblock %}
+{% block container %}
+<table id="results">
+  <tr>
+    <th>Subject</th>
+    <th>Skill</th>
+    <th>Marks</th>
+  </tr>
+  {% for result in results %}
+      <tr>
+      	<td>{{ result.exam.subject }} </td>
+      	<td>{{ result.exam.skillType }}</td>
+      	<td>{{ result.marks }}</td>
+      </tr>
+  {% endfor %}
+</table>
+{% endblock container %}

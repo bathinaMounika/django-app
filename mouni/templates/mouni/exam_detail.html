@@ -1,0 +1,76 @@
+{% extends "mouni/base.html" %}
+{% load shuffle %}
+{% block container %}
+<form method=POST %}">
+    {% csrf_token %}
+     <div style="background-color:lightgreen">
+        <h1>
+            {% if has_written %}
+                You have already written the exam
+            {% else %}
+                CHOOSE THE CORRECT ANSWER
+            {% endif %}
+        </h1>
+    </div>
+    {% if object.teacher == user.username %}
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="#">Update</a>
+         <a class="btn btn-danger btn-sm mt-1 mb-1" href="#">Delete</a>
+    {% endif %}
+    <input type="hidden" name="exam" value={{ object.id }}>
+    <input type="hidden" name="seed" value= "{{ seed }}">
+    {% for question in object.question_set.all|shuffle %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    {{ forloop.counter }} &emsp; {{ question }}
+                    {% comment %}
+                    <!-- <small class="text-muted">{{ exam.start_date|date:"F d, Y"}}</small> -->
+                    {% endcomment %}
+                </div>
+                    {% for value in question.get_fields %}
+                        {% if has_written %}
+                            {% ifequal op_list|get_item:question.id forloop.counter %}
+                                {% with checked="True" %}
+                                    {% ifequal question.ans value %}
+                                        <div style="background-color:lightgreen">
+                                            <input type="radio", disabled=True checked={{checked}}>
+                                            <label > {{ value }} </label> <br>
+                                        </div>
+                                    {% else %}
+                                        <div style="background-color:lightsalmon">
+                                            <input type="radio", disabled=True checked={{checked}}>
+                                            <label > {{ value }} </label> <br>
+                                        </div>
+                                    {% endifequal %}
+                                {% endwith %}
+                            {% else %}
+                                {% ifequal question.ans value %}
+                                    <div style="background-color:lightgreen">
+                                        <input type="radio", disabled=True>
+                                        <label > {{ value }} </label> <br>
+                                    </div>
+                                {% else %}
+                                    <div>
+                                        <input type="radio", disabled=True>
+                                        <label > {{ value }} </label> <br>
+                                    </div>
+                                {% endifequal %}
+                            {% endifequal %}
+                        {% else %}
+                        <input type="radio" id="{{ forloop.parentloop.counter }}{{ forloop.counter }}" name="{{ question.id }}" value="{{ value }}+{{ forloop.counter }}" required="True">
+                        <label for="{{ forloop.parentloop.counter }}{{ forloop.counter }}" > {{ value }} </label> <br>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+        </article>
+    {% endfor %}
+    {% if has_written %}
+    {% else %}
+    <div class="row spacer">
+        <div class="col-4 offset-2">
+            <button type="submit" class="btn btn-block btn-primary">Submit</button>
+        </div>
+    </div>
+    {% endif %}
+</form>
+{% endblock container %}
