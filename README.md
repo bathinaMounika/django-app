@@ -12,9 +12,11 @@
     <li>
         Clone the repo
     </li>
+</ul>
  ```
            git clone https://github.com/bathinaMounika/django-app.git
-        ```
+```
+<ul>
     <li>
         Create Virtual Environment
         ```
