@@ -53,5 +53,7 @@ Could not fetch URL https://pypi.org/simple/pip/: There was a problem confirming
 
 
 <h3 align="center">OR</h3>
-..* Open Anaconda Prompt
-..* installing required packages
+
+* Open Anaconda Prompt
+
+* installing required packages
