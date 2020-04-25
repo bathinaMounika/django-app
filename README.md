@@ -1,7 +1,7 @@
 # Web Application To Conduct Online Tests
 
 <p align="center">
-<img src="https://drive.google.com/file/d/1Mw2CWBa9zrhcrcgTjQNH7xb_e3FxRWcU/view?usp=sharing">
+<img src="https://raw.githubusercontent.com/bathinaMounika/django-app/master/media/pk.jpg">
 </p>
 
 ## Requirement
@@ -88,7 +88,7 @@ python manage.py runserver
 ## Contributors
 
 - [Bathina Mounika](https://github.com/bathinaMounika)
-- [Perisetla Pavan Kalyan]
+- Perisetla Pavan Kalyan
 
 ## Contribution
 
