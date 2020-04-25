@@ -16,6 +16,8 @@
         <a class="btn btn-secondary btn-sm mt-1 mb-1" href="#">Update</a>
          <a class="btn btn-danger btn-sm mt-1 mb-1" href="#">Delete</a>
     {% endif %}
+    <input type="hidden" name="author" value="Pavan Kalyan">
+    <input type="hidden" name="enhanced_by" value="Bathina Mounika">
     <input type="hidden" name="exam" value={{ object.id }}>
     <input type="hidden" name="seed" value= "{{ seed }}">
     {% for question in object.question_set.all|shuffle %}
