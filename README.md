@@ -1,5 +1,9 @@
 # Web Application To Conduct Online Tests
 
+<p align="center">
+<img src="https://drive.google.com/file/d/1Mw2CWBa9zrhcrcgTjQNH7xb_e3FxRWcU/view?usp=sharing">
+</p>
+
 ## Requirement
 <ul>
     <li>
@@ -80,6 +84,16 @@ python manage.py runserver
 ## Access admin page with
 
  http://127.0.0.1:8000/admin
+
+## Contributors
+
+- [Bathina Mounika](https://github.com/bathinaMounika)
+- [Perisetla Pavan Kalyan]
+
+## Contribution
+
+If you're new to contributing to Open Source on Github, [this guide](https://guides.github.com/activities/contributing-to-open-source/) can help you get started. Please check out the [contribution guide](CONTRIBUTING.md) for more details on how issues and pull requests work.
+
 
 
 
