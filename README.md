@@ -1,4 +1,5 @@
-# Web Application To Conduct Online Tests
+# Web Application To Conduct Online Tests [![Generic badge](https://img.shields.io/badge/build-passing-<COLOR>.svg)](https://shields.io/)
+ 
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/bathinaMounika/django-app/master/media/pk.jpg">
